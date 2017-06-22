@@ -5,13 +5,24 @@
 	<hibernate-configuration>
 		<session-factory>
 			<!-- 数据库链接 -->
-			<property name="oracle.jdbc.OracleDriver"></property>
-			<property name=""></property>
-			<!-- 辅助参数 -->
-			<property name=""></property>
+			<property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
+			<property name="connection.url">jdbc:oracle:thin:@localhost:1521:bcubbo</property>
+			<!-- url -->
+			<property name="connection.username">bcubbo2</property>
+			<!-- username -->
+			<property name="password">BcubBo001</property>
+			<!-- password -->
+			<!-- 辅助参数 ,方言-->
+			<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+			<!-- format_sql将语句进行格式化，防止输出过长 -->
+			<property name="format_sql">true</property>
+			<!-- 将执行的sql语句进行输出 -->
+			<property name="show_sql">true</property>
 			<!-- 映射文件 -->
-			<property name=""></property>
 			
+			
+			
+									
 		</session-factory>
 	
 	
