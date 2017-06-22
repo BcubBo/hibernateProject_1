@@ -10,7 +10,7 @@
 			<!-- url -->
 			<property name="connection.username">bcubbo2</property>
 			<!-- username -->
-			<property name="password">BcubBo001</property>
+			<property name="connection.password">BcubBo001</property>
 			<!-- password -->
 			<!-- 辅助参数 ,方言-->
 			<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
@@ -18,10 +18,14 @@
 			<property name="format_sql">true</property>
 			<!-- 将执行的sql语句进行输出 -->
 			<property name="show_sql">true</property>
+			<property name="current_session_context_class">thread</property>
+			<!-- 一个线程创建一个会话不冲突的设定 -->
 			<!-- 映射文件 -->
 			
-			
-			
+			<mapping resource="po/User.hbm.xml"/>
+			<!-- <mapping resource="po/House.hbm.xml"/>
+				<mapping resource="po/Type.hbm.xml"/>
+			 -->
 									
 		</session-factory>
 	

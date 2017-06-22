@@ -14,16 +14,33 @@
     			<!-- increment 存在问题如果条件不满足会冲突 -->
     			<!-- 如果不想区别可以用native -->
     			<!-- uuid 32位长度字符串进行主键赋值，唯一性 -->
-    			<generator class="sequence">
-    				
-    				<param name="sequence">SEQ_ID</param>
+    			<generator class="increment">
+    				<!-- 如果没有指定默认序列值的情况下 -->
+    				<!--此框架hibernate_sequence为默认的序列值 即在表中创建名称为此的序列，要么指定特定的序列名称-->
+    				<param name="increment"></param>
     				<!-- 访问指定序列提供序列名称 -->
     				
-    			
     			</generator>
     		
     		</id>
+    	<property name="name" type="java.lang.String" >
+    		<column name="NAME" length="50" not-null="true"></column>	
+    	</property>
+    	<property name="password" type="java.lang.String">
+    		<column name="PASSWORD" length="50" not-null="true"></column>
+    	</property>
+    	<property name="telephone" type="java.lang.String">
     	
+    		<column name="TELEPHONE" length="50" not-null="false"></column>
+    	
+    	</property>
+    	<property name="username" type="java.lang.String">
+    		<column name="USERNAME" length="50" not-null="false"></column>
+    	</property>
+    	<property name="isAdmin" type="java.lang.String">
+    		<column name="ISADMIN" length="2" not-null="false"></column>
+    	
+    	</property>
     	
     	</class>
     
