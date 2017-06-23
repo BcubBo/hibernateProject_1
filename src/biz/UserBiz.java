@@ -111,7 +111,46 @@ public class UserBiz {
 		}
 		
 		
-	}
+	}////测试更新的操作
+	
+	
+	
+	
+	public void delete(User user){
+		
+		Transaction tx = null;
+		try{
+
+
+			tx = HibernateSessionFactory.getSession().beginTransaction();
+			
+			dao.delete(user);
+			
+			tx.commit();
+			
+			
+			
+		}catch(HibernateException e){
+			
+			
+			e.printStackTrace();
+			if(tx != null){
+				
+				tx.rollback();
+				
+			}
+			
+		}
+		
+		
+		
+		
+	}////删除用方法
+	
+	
+	
+	
+	
 	
 }
 ////

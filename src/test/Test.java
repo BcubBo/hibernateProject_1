@@ -10,12 +10,12 @@ public class Test {
 		
 		User user = new User();
 		user.setId(1005);
-		user.setName("dynamicTest");
-		user.setPassword("223gdserds");
+		//ruser.setName("dynamicTest_changed");
+		//user.setPassword("223gdserds");
 		
 		UserBiz biz = new UserBiz();
 		//biz.addNewUser(user);
-		biz.test(user);
+		biz.delete(user);
 		//user = biz.getUser(1001);
 		//System.out.println(user.getName());
 		System.out.println("成功");
