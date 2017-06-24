@@ -1,5 +1,6 @@
 package test;
 
+import java.util.Iterator;
 import java.util.List;
 
 import biz.UserBiz;
@@ -16,8 +17,10 @@ public class Test {
 		user.setPassword("223gdserds");*/
 		
 		UserBiz biz = new UserBiz();
-		List<User> users = biz.findUsers(null);
-		System.out.println("<><><><><><><><><><><><><><><><><><><><><><>");
+		//List<User> users = biz.findUsers(null);
+		
+		Iterator<User> users = biz.testIterate(user);
+		System.out.println("<><><><><><><><><><><><><><><><><><><><><><>");/*
 		for(User u:users){
 			
 			System.out.println(u.getName()+"<>"+u.getPassword()+"<>"+u.getUsername());
@@ -25,7 +28,14 @@ public class Test {
 			System.out.println("<><><><><><><><><><><><><><><><><><><><><><>");
 			
 			
-		}
+		}*/
+		
+
+		
+		
+		
+		
+		
 		
 		//biz.addNewUser(user);
 		//biz.delete(user);

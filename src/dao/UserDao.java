@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -102,14 +103,32 @@ public class UserDao {
 	}//大量数据的操作
 	
 	@SuppressWarnings("unchecked")
-	public List<User> findUser(){
+	public List<User> findUser(User user){
 		//from User == select * from Users;
-		Query qy = HibernateSessionFactory.getSession().createQuery("from User");
+		Query qy = HibernateSessionFactory.getSession().createQuery("from User u where u.id = :id and u.name like :name");
 		
+		
+		//:冒号占位符的使用
+		
+		qy.setProperties(user);
+		//此方法根据占位符后的名字进行在对象中查找setter和getter的操作简化查找的方式
 /*		qy.setInteger(0, 1004);
 		qy.setString(,);*/
 		
 		
+		
+		
+		
+		
+		
+		
+		/*for(int i = 0;i< args.length; i++){
+			
+			
+			qy.setParameter(i,args[i]);//与setObject(,object)类似
+			
+			
+		}*/
 		
 		
 		
@@ -118,6 +137,18 @@ public class UserDao {
 	}//创建HQL语句
 	
 	
+	@SuppressWarnings("unchecked")
+	public Iterator<User> iterateTest(){
+		
+		Query qy = HibernateSessionFactory.getSession().createQuery("from User");
+		
+		return qy.iterate();
+		
+		
+		
+		
+		
+	}
 	
 	
 	

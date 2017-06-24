@@ -1,5 +1,6 @@
 package biz;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -12,6 +13,52 @@ import po.User;
 public class UserBiz {
 	private UserDao dao = new UserDao();
 	
+
+	public Iterator<User> testIterate(User user){
+		
+		
+		Transaction tx = null;
+		
+		Iterator<User> users = null;
+		
+		
+		
+		try{
+			
+			tx = HibernateSessionFactory.getSession().beginTransaction();
+			
+			users  = dao.iterateTest();
+			while(users.hasNext()){
+				
+				
+				System.out.println(users.next().getName());
+				
+				//iterate方法只返回主键的值的集合
+			}
+			
+			tx.commit();
+			
+			
+			
+			
+		}catch(HibernateException e){
+			
+			
+			e.printStackTrace();
+			if(tx!=null){
+				
+				tx.rollback();
+			}
+		}
+		
+		return users;
+		
+		
+		
+	}//测试iterate方法
+	
+	
+	
 	
 	public List<User> findUsers(User user){
 		
@@ -22,7 +69,7 @@ public class UserBiz {
 			
 			tx = HibernateSessionFactory.getSession().beginTransaction();
 			
-			users = dao.findUser();
+			users = dao.findUser(user);
 			
 			users.get(0).setName("PersistentTest");
 			
@@ -45,7 +92,7 @@ public class UserBiz {
 		
 		
 		
-	}
+	}//HQL查询
 	
 	
 	
