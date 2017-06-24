@@ -1,5 +1,9 @@
 package dao;
 
+import java.util.List;
+
+import org.hibernate.Query;
+
 import common.HibernateSessionFactory;
 import po.User;
 
@@ -41,7 +45,8 @@ public class UserDao {
 		u.setName(user.getName());
 		u.setPassword(user.getPassword());
 		u.setTelephone(user.getTelephone());
-		u.setUsername(user.getUsername());*/
+		u.setUsername(user.getUsername());
+*/
 		
 		HibernateSessionFactory.getSession().merge(user);
 		//以上方式的精简版方式
@@ -55,9 +60,9 @@ public class UserDao {
 	
 	public void delete(User user){
 		
-		User u = (User)HibernateSessionFactory.getSession().get(User.class, user.getId());
-		//先查询防止非空数据含有空值且报错
-		HibernateSessionFactory.getSession().delete(u);
+		//User u = (User)HibernateSessionFactory.getSession().get(User.class, user.getId());
+		//先查询防止非空数据含有空值且报错,或者在xml配置文件里将non-null="true"设置未"false"
+		HibernateSessionFactory.getSession().delete(user);
 		//
 		
 		
@@ -68,9 +73,49 @@ public class UserDao {
 		
 	}//删除操作
 	
+	public void saveAll(List<User> users){
+		
+		
+		for(int i = 0 ; i <users.size();i++){
+			
+			
+			HibernateSessionFactory.getSession().save(users.get(i));
+			if(i/20>0 && i%20 == 0 ){
+				
+				
+				HibernateSessionFactory.getSession().flush();
+				HibernateSessionFactory.getSession().clear();
+				
+				
+				
+			}
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+	}//大量数据的操作
 	
-	
-	
+	@SuppressWarnings("unchecked")
+	public List<User> findUser(){
+		//from User == select * from Users;
+		Query qy = HibernateSessionFactory.getSession().createQuery("from User");
+		
+/*		qy.setInteger(0, 1004);
+		qy.setString(,);*/
+		
+		
+		
+		
+		
+		return qy.list();
+		
+	}//创建HQL语句
 	
 	
 	

@@ -1,5 +1,7 @@
 package biz;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Transaction;
 
@@ -9,6 +11,45 @@ import po.User;
 
 public class UserBiz {
 	private UserDao dao = new UserDao();
+	
+	
+	public List<User> findUsers(User user){
+		
+		Transaction tx = null;
+		List<User> users = null;
+		
+		try{
+			
+			tx = HibernateSessionFactory.getSession().beginTransaction();
+			
+			users = dao.findUser();
+			
+			users.get(0).setName("PersistentTest");
+			
+			tx.commit();//别忘了事务提交
+		}catch(HibernateException e){
+			
+			
+			e.printStackTrace();
+			if(tx != null){
+				
+				tx.rollback();
+				
+				
+			}
+			
+			
+		}
+		
+		return users;
+		
+		
+		
+	}
+	
+	
+	
+	
 	
 	public void addNewUser(User user){
 		

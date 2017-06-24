@@ -25,10 +25,10 @@
     		
     		</id>
     	<property name="name" type="java.lang.String" >
-    		<column name="NAME" length="50" not-null="true"></column>	
+    		<column name="NAME" length="50" ></column>	<!-- not-null="true" -->
     	</property>
     	<property name="password" type="java.lang.String">
-    		<column name="PASSWORD" length="50" not-null="true"></column>
+    		<column name="PASSWORD" length="50" ></column><!-- not-null="true" -->
     	</property>
     	<property name="telephone" type="java.lang.String">
     	
