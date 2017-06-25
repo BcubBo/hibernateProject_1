@@ -114,8 +114,16 @@ public class UserDao {
 		//此方法根据占位符后的名字进行在对象中查找setter和getter的操作简化查找的方式
 /*		qy.setInteger(0, 1004);
 		qy.setString(,);*/
-		
-		
+/*		
+		//方法链的使用
+		return HibernateSessionFactory.getSession()
+				.createQuery("")
+				.setInteger(0, 1)
+				.setString(1,"")
+				.setShort(2,(short)3)
+				.list();
+		//此方法链的调用的前提是时最顶端对象每次调用的时候都是返回自身才可行
+*/				
 		
 		
 		
