@@ -12,14 +12,14 @@ public class Test {
 		
 		
 		User user = new User();
-/*		user.setId(1005);
-		user.setName("dynamicTest_changed");
-		user.setPassword("223gdserds");*/
+		user.setId(1005);
+		user.setName("dynamicTest_changedTest");
+		user.setPassword("223gdserds");
 		
 		UserBiz biz = new UserBiz();
 		//List<User> users = biz.findUsers(null);
 		
-		Iterator<User> users = biz.testIterate(user);
+		 biz.test(user);
 		System.out.println("<><><><><><><><><><><><><><><><><><><><><><>");/*
 		for(User u:users){
 			
